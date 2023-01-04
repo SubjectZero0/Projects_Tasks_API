@@ -30,8 +30,8 @@ class ProjectAPIViewSet(ModelViewSet):
 
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
-    # filter_backends = [SearchFilter]
-    # search_fields =
+    filter_backends = [SearchFilter]
+    search_fields = ['project_title', 'project_descr']
 
     #           Methods Below
     # -----------------------------------------
@@ -77,8 +77,8 @@ class TaskAPIViewSet(ModelViewSet):
 
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
-    # filter_backends = [SearchFilter]
-    # search_fields =
+    filter_backends = [SearchFilter]
+    search_fields = ['task_title', 'task_descr', 'task_tags__tag_name']
 
     #           Methods Below
     # -----------------------------------------
