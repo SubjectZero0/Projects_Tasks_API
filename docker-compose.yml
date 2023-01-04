@@ -9,10 +9,12 @@ services:
         ports:
             - 8000:8000
         volumes:
-            - ./dataverse_api_project:/dataverse_api_project
+            - ./backend:/dataverse_api
         command: >
             sh -c "python manage.py makemigrations &&
              python manage.py migrate &&
+             coverage run --source='.' manage.py test &&
+             coverage report &&
              python manage.py runserver 0.0.0.0:8000"
         environment:
             - DB_HOST=db
@@ -25,11 +27,11 @@ services:
     db:
         image: postgres:15rc1-alpine
         volumes:
-            - dev-db-data:/var/lib/postgresql/data
+            - dataverse-dev-db-1-data:/var/lib/postgresql/data
         environment:
             - POSTGRES_DB=devdb
             - POSTGRES_USER=devuser
             - POSTGRES_PASSWORD=changethis
 
 volumes:
-    dev-db-data:
+    dataverse-dev-db-1-data:

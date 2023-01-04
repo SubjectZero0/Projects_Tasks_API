@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
 
     'core.apps.CoreConfig',
+    'users.apps.UsersConfig',
+    'projects.apps.ProjectsConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -131,15 +134,19 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'core.CustomUserModel'
+AUTH_USER_MODEL = 'core.CustomUser'
 
 REST_FRAMEWORK = {
 
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+
 }
 
-#DRF-SPECTACULAR settings
+# DRF-SPECTACULAR settings
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Dataverse Project API',
     'DESCRIPTION': 'A REST API for Dataverse Projects',

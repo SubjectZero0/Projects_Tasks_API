@@ -2,10 +2,10 @@ FROM python:3.11.1-alpine3.16
 
 ENV PYTHONUNBUFFERED 1
 
+COPY ./backend /dataverse_api
 COPY ./requirements.txt /tmp/requirements.txt
-COPY ./dataverse_api_project /dataverse_api_project
 
-WORKDIR /dataverse_api_project
+WORKDIR /dataverse_api
 EXPOSE 8000
 
 ARG DEV=false
@@ -22,8 +22,8 @@ RUN python -m venv /py && \
         --disabled-password \
         --no-create-home \
         django-user && \
-    chown -R django-user:django-user /home && \
-    chmod -R 755 /home
+    chown -R django-user:django-user /dataverse_api && \
+    chmod -R 755 /dataverse_api
 
 ENV PATH="/py/bin:$PATH"
 
