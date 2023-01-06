@@ -1,17 +1,17 @@
 """
 Task and Project API Views
 """
-
-from django.shortcuts import render
-from django.contrib.auth import get_user_model
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.filters import SearchFilter
 from rest_framework.permissions import IsAuthenticated
+from .serializers import ProjectSerializer, TaskSerializer
 
-from .serializers import ProjectSerializer, TaskSerializer, TagSerializer
 from core.models import Projects, Tasks
+
 
 # --------------------------------------------------------------------
 
@@ -35,6 +35,10 @@ class ProjectAPIViewSet(ModelViewSet):
 
     #           Methods Below
     # -----------------------------------------
+
+    @method_decorator(cache_page(60*15))
+    def dispatch(self, request, *args, **kwargs):
+        return super(ProjectAPIViewSet, self).dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
         """
@@ -82,6 +86,10 @@ class TaskAPIViewSet(ModelViewSet):
 
     #           Methods Below
     # -----------------------------------------
+
+    @method_decorator(cache_page(60*15))
+    def dispatch(self, request, *args, **kwargs):
+        return super(TaskAPIViewSet, self).dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
         """
