@@ -2,6 +2,7 @@
 Serializers for Projects, Tasks and Tags.
 """
 
+import math
 from rest_framework import serializers
 
 from django.contrib.auth import get_user_model
@@ -110,7 +111,7 @@ class ProjectSerializer(serializers.ModelSerializer):
 
     def get_project_prog_percent(self, obj):
         """
-        Method to calculate the weighted average
+        Method to calculate the average
         of project's tasks progression.
         """
         tasks = Tasks.objects.filter(parent_project=obj)
@@ -120,7 +121,7 @@ class ProjectSerializer(serializers.ModelSerializer):
             for task in tasks:
                 sum += task.task_prog_percent
 
-            obj.project_prog_percent = sum/len(tasks)
+            obj.project_prog_percent = math.floor(sum/len(tasks))
 
         except:
             obj.project_prog_percent = 0
