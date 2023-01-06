@@ -16,22 +16,20 @@
 
 6.  CRUD Projects API:
 
-        - Contains a title, description, progress and finish date.
-
-        - personal access (only the owner can view and edit it and it’s tasks)
-
-        - The progress is automatically updated using the associated tasks' average progress
+    -   Contains a title, description, progress and finish date.
+    -   personal access (only the owner can view and edit it and it’s tasks)
+    -   The progress is automatically updated using the associated tasks' average progress
 
 7.  CRUD Task API.
 
-        -   Contains a title, description, tags, parent project, progress and finish date.
+    -   Contains a title, description, tags, parent project, progress and finish date.
 
-        -   The progress is the completion percentage of the task. It is updated manually
+    -   The progress is the completion percentage of the task. It is updated manually
         from the project/task owner. When the task is completed, the progress is not editable.
 
-        - The tags are user-defined strings that are used for the logical grouping
-         of tasks under a project and are passed optionally as a query parameter
-         on the task read operations.
+    -   The tags are user-defined strings that are used for the logical grouping
+        of tasks under a project and are passed optionally as a query parameter
+        on the task read operations.
 
 8.  Search Filtering for the Projects and Tasks.
 
