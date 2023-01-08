@@ -8,7 +8,7 @@
 
 2.  Swagger API documentation.
 
-3.  Token authentication system with custon user model and manager.
+3.  Token authentication system with custom user model and manager.
 
 4.  Unit Tests with 96% code coverage.
 
