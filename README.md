@@ -47,3 +47,5 @@ Three containers are created. The app, the database and the cache containers.
 #### Confirming the cache is working:
 
 [![image](https://www.linkpicture.com/q/cache.jpg)](https://www.linkpicture.com/view.php?img=LPic63b7eca23ce991982202688)
+
+Disclaimer : This  project is part of an assesment assignment
